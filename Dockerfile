@@ -15,10 +15,13 @@ WORKDIR /var/www
 COPY . .
 
 # Install dependencies
-RUN composer install --optimize-autoloader --no-dev
+RUN composer install --optimize-autoloader --no-dev \
+    && php artisan config:cache \
+    && php artisan route:cache
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www
+RUN chmod -R 775 storage bootstrap/cache \
+    && chown -R www-data:www-data /var/www
 
 EXPOSE 8000
 
