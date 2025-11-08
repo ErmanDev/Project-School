@@ -23,6 +23,11 @@ RUN composer install --optimize-autoloader --no-dev \
 RUN chmod -R 775 storage bootstrap/cache \
     && chown -R www-data:www-data /var/www
 
-EXPOSE 8000
+RUN php artisan view:cache \
+    && php artisan migrate --force
 
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# ✅ Change this to match Render’s expected port
+EXPOSE 10000
+
+# ✅ Serve Laravel on port 10000
+CMD php artisan serve --host=0.0.0.0 --port=10000
