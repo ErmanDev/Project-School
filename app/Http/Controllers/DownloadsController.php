@@ -3,29 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Download;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class DownloadsController extends Controller
 {
     /**
+     * Get static downloads data
+     */
+    private function getStaticData()
+    {
+        return collect([
+            (object) [
+                'id' => 1,
+                'title' => 'Academic Calendar 2024-2025',
+                'description' => 'Official academic calendar for the 2024-2025 academic year.',
+                'category' => 'calendars',
+                'slug' => 'academic-calendar-2024-2025',
+                'file_name' => 'academic-calendar-2024-2025.pdf',
+                'file_path' => 'downloads/academic-calendar-2024-2025.pdf',
+                'is_active' => true,
+                'order' => 1,
+            ],
+            (object) [
+                'id' => 2,
+                'title' => 'Student Handbook',
+                'description' => 'Complete student handbook with policies and procedures.',
+                'category' => 'handbooks',
+                'slug' => 'student-handbook',
+                'file_name' => 'student-handbook.pdf',
+                'file_path' => 'downloads/student-handbook.pdf',
+                'is_active' => true,
+                'order' => 1,
+            ],
+            (object) [
+                'id' => 3,
+                'title' => 'Course Catalog',
+                'description' => 'Complete listing of all available courses and programs.',
+                'category' => 'catalogs',
+                'slug' => 'course-catalog',
+                'file_name' => 'course-catalog.pdf',
+                'file_path' => 'downloads/course-catalog.pdf',
+                'is_active' => true,
+                'order' => 1,
+            ],
+        ]);
+    }
+
+    /**
      * Display a listing of all downloads, grouped by category
      */
     public function index()
     {
-        try {
-            $downloads = Download::where('is_active', true)
-                ->orderBy('category')
-                ->orderBy('order')
-                ->get()
-                ->groupBy('category');
-        } catch (\Exception $e) {
-            // If database is not available, use empty collection
-            $downloads = collect([]);
-        }
-
+        $downloads = $this->getStaticData()->groupBy('category');
         return view('downloads.index', compact('downloads'));
     }
 
@@ -34,24 +64,20 @@ class DownloadsController extends Controller
      */
     public function download($slug): BinaryFileResponse
     {
-        try {
-            $download = Download::where('slug', $slug)
-                ->where('is_active', true)
-                ->firstOrFail();
+        $allDownloads = $this->getStaticData();
+        $download = $allDownloads->firstWhere('slug', $slug);
 
-            // Increment download count
-            $download->incrementDownloadCount();
-
-            // Get the file path
-            $filePath = storage_path('app/public/' . $download->file_path);
-            
-            if (!file_exists($filePath)) {
-                abort(404, 'File not found');
-            }
-
-            return response()->download($filePath, $download->file_name);
-        } catch (\Exception $e) {
+        if (!$download) {
             abort(404, 'Download not found');
         }
+
+        // Get the file path
+        $filePath = storage_path('app/public/' . $download->file_path);
+        
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found');
+        }
+
+        return response()->download($filePath, $download->file_name);
     }
 }

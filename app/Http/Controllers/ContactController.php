@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMessageSubmitted;
-use App\Models\Department;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -13,12 +12,15 @@ class ContactController extends Controller
 {
     public function index(): View
     {
-        try {
-            $departments = Department::orderBy('name')->get();
-        } catch (\Exception $e) {
-            // If database is not available, use empty collection
-            $departments = collect([]);
-        }
+        // Static departments data
+        $departments = collect([
+            (object) ['id' => 1, 'name' => 'Administration', 'slug' => 'administration'],
+            (object) ['id' => 2, 'name' => 'Academic Affairs', 'slug' => 'academic-affairs'],
+            (object) ['id' => 3, 'name' => 'Student Services', 'slug' => 'student-services'],
+            (object) ['id' => 4, 'name' => 'Admissions', 'slug' => 'admissions'],
+            (object) ['id' => 5, 'name' => 'Registrar', 'slug' => 'registrar'],
+        ]);
+        
         $mapsEmbedUrl = config('services.google.maps_embed_url');
         return view('contact.index', compact('departments', 'mapsEmbedUrl'));
     }

@@ -2,35 +2,74 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Models\FacultyStaff;
 use Illuminate\Http\Request;
 
 class FacultyStaffController extends Controller
 {
+    /**
+     * Get static departments and faculty data
+     */
+    private function getStaticData()
+    {
+        return collect([
+            (object) [
+                'id' => 1,
+                'name' => 'Computer Science',
+                'slug' => 'computer-science',
+                'description' => 'Department of Computer Science',
+                'facultyAndStaff' => collect([
+                    (object) [
+                        'id' => 1,
+                        'name' => 'Dr. John Smith',
+                        'slug' => 'dr-john-smith',
+                        'type' => 'faculty',
+                        'position' => 'Professor',
+                        'email' => 'john.smith@example.com',
+                        'department_id' => 1,
+                    ],
+                    (object) [
+                        'id' => 2,
+                        'name' => 'Dr. Jane Doe',
+                        'slug' => 'dr-jane-doe',
+                        'type' => 'faculty',
+                        'position' => 'Associate Professor',
+                        'email' => 'jane.doe@example.com',
+                        'department_id' => 1,
+                    ],
+                ]),
+            ],
+            (object) [
+                'id' => 2,
+                'name' => 'Business Administration',
+                'slug' => 'business-administration',
+                'description' => 'Department of Business Administration',
+                'facultyAndStaff' => collect([
+                    (object) [
+                        'id' => 3,
+                        'name' => 'Dr. Robert Johnson',
+                        'slug' => 'dr-robert-johnson',
+                        'type' => 'faculty',
+                        'position' => 'Professor',
+                        'email' => 'robert.johnson@example.com',
+                        'department_id' => 2,
+                    ],
+                ]),
+            ],
+        ]);
+    }
+
     public function index()
     {
-        try {
-            $departments = Department::with(['facultyAndStaff' => function ($q) {
-                $q->orderBy('name');
-            }])->orderBy('name')->get();
-        } catch (\Exception $e) {
-            // If database is not available, use empty collection
-            $departments = collect([]);
-        }
-
+        $departments = $this->getStaticData();
         return view('faculty-staff.index', compact('departments'));
     }
 
     public function showDepartment(string $slug)
     {
-        try {
-            $department = Department::where('slug', $slug)
-                ->with(['facultyAndStaff' => function ($q) {
-                    $q->orderBy('type')->orderBy('name');
-                }])
-                ->firstOrFail();
-        } catch (\Exception $e) {
+        $allDepartments = $this->getStaticData();
+        $department = $allDepartments->firstWhere('slug', $slug);
+
+        if (!$department) {
             abort(404, 'Department not found');
         }
 
@@ -39,12 +78,24 @@ class FacultyStaffController extends Controller
 
     public function showPerson(string $slug)
     {
-        try {
-            $person = FacultyStaff::where('slug', $slug)->with('department')->firstOrFail();
-        } catch (\Exception $e) {
+        $allDepartments = $this->getStaticData();
+        $person = null;
+        $department = null;
+
+        foreach ($allDepartments as $dept) {
+            $found = $dept->facultyAndStaff->firstWhere('slug', $slug);
+            if ($found) {
+                $person = $found;
+                $department = $dept;
+                break;
+            }
+        }
+
+        if (!$person) {
             abort(404, 'Person not found');
         }
-        return view('faculty-staff.show', compact('person'));
+
+        return view('faculty-staff.show', compact('person', 'department'));
     }
 }
 
