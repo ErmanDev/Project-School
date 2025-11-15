@@ -138,7 +138,19 @@ class NewsAndEventsController extends Controller
         $allItems = $this->getStaticData();
         
         $featuredItems = $allItems->where('is_featured', true)->take(3)->values();
-        $news = $allItems->where('category', 'news')->values();
+        
+        // Create paginator for news (since view expects pagination)
+        $newsCollection = $allItems->where('category', 'news')->values();
+        $currentPage = request()->get('page', 1);
+        $perPage = 6;
+        $news = new \Illuminate\Pagination\LengthAwarePaginator(
+            $newsCollection->forPage($currentPage, $perPage),
+            $newsCollection->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+        
         $events = $allItems->where('category', 'event')->sortBy('event_date')->values();
         $announcements = $allItems->where('category', 'announcement')->take(5)->values();
 

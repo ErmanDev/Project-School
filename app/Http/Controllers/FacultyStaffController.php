@@ -17,6 +17,7 @@ class FacultyStaffController extends Controller
                 'name' => 'Computer Science',
                 'slug' => 'computer-science',
                 'description' => 'Department of Computer Science',
+                'office_location' => 'Science Building, Room 301',
                 'facultyAndStaff' => collect([
                     (object) [
                         'id' => 1,
@@ -25,6 +26,7 @@ class FacultyStaffController extends Controller
                         'type' => 'faculty',
                         'position' => 'Professor',
                         'email' => 'john.smith@example.com',
+                        'office_location' => 'Science Building, Room 302',
                         'department_id' => 1,
                     ],
                     (object) [
@@ -34,6 +36,7 @@ class FacultyStaffController extends Controller
                         'type' => 'faculty',
                         'position' => 'Associate Professor',
                         'email' => 'jane.doe@example.com',
+                        'office_location' => 'Science Building, Room 303',
                         'department_id' => 1,
                     ],
                 ]),
@@ -43,6 +46,7 @@ class FacultyStaffController extends Controller
                 'name' => 'Business Administration',
                 'slug' => 'business-administration',
                 'description' => 'Department of Business Administration',
+                'office_location' => 'Business Building, Room 201',
                 'facultyAndStaff' => collect([
                     (object) [
                         'id' => 3,
@@ -51,6 +55,7 @@ class FacultyStaffController extends Controller
                         'type' => 'faculty',
                         'position' => 'Professor',
                         'email' => 'robert.johnson@example.com',
+                        'office_location' => 'Business Building, Room 202',
                         'department_id' => 2,
                     ],
                 ]),

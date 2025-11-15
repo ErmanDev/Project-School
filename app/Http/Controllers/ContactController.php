@@ -14,11 +14,11 @@ class ContactController extends Controller
     {
         // Static departments data
         $departments = collect([
-            (object) ['id' => 1, 'name' => 'Administration', 'slug' => 'administration'],
-            (object) ['id' => 2, 'name' => 'Academic Affairs', 'slug' => 'academic-affairs'],
-            (object) ['id' => 3, 'name' => 'Student Services', 'slug' => 'student-services'],
-            (object) ['id' => 4, 'name' => 'Admissions', 'slug' => 'admissions'],
-            (object) ['id' => 5, 'name' => 'Registrar', 'slug' => 'registrar'],
+            (object) ['id' => 1, 'name' => 'Administration', 'slug' => 'administration', 'email' => 'admin@example.com'],
+            (object) ['id' => 2, 'name' => 'Academic Affairs', 'slug' => 'academic-affairs', 'email' => 'academic@example.com'],
+            (object) ['id' => 3, 'name' => 'Student Services', 'slug' => 'student-services', 'email' => 'studentservices@example.com'],
+            (object) ['id' => 4, 'name' => 'Admissions', 'slug' => 'admissions', 'email' => 'admissions@example.com'],
+            (object) ['id' => 5, 'name' => 'Registrar', 'slug' => 'registrar', 'email' => 'registrar@example.com'],
         ]);
         
         $mapsEmbedUrl = config('services.google.maps_embed_url');
