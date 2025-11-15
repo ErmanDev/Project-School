@@ -51,7 +51,19 @@ class AlumniController extends Controller
 
     public function index()
     {
-        $alumniItems = $this->getStaticData();
+        $alumniCollection = $this->getStaticData();
+        
+        // Create paginator for alumni items (since view expects pagination)
+        $currentPage = request()->get('page', 1);
+        $perPage = 9;
+        $alumniItems = new \Illuminate\Pagination\LengthAwarePaginator(
+            $alumniCollection->forPage($currentPage, $perPage),
+            $alumniCollection->count(),
+            $perPage,
+            $currentPage,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+        
         $alumniSiteUrl = config('app.alumni_url', 'https://alumni.example.edu');
 
         return view('alumni.index', compact('alumniItems', 'alumniSiteUrl'));

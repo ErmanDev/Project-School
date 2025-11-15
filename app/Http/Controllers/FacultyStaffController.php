@@ -18,6 +18,7 @@ class FacultyStaffController extends Controller
                 'slug' => 'computer-science',
                 'description' => 'Department of Computer Science',
                 'office_location' => 'Science Building, Room 301',
+                'office_hours' => 'Monday - Friday: 9:00 AM - 5:00 PM',
                 'facultyAndStaff' => collect([
                     (object) [
                         'id' => 1,
@@ -27,6 +28,7 @@ class FacultyStaffController extends Controller
                         'position' => 'Professor',
                         'email' => 'john.smith@example.com',
                         'office_location' => 'Science Building, Room 302',
+                        'office_hours' => 'Monday, Wednesday, Friday: 10:00 AM - 12:00 PM\nBy appointment',
                         'department_id' => 1,
                     ],
                     (object) [
@@ -37,6 +39,7 @@ class FacultyStaffController extends Controller
                         'position' => 'Associate Professor',
                         'email' => 'jane.doe@example.com',
                         'office_location' => 'Science Building, Room 303',
+                        'office_hours' => 'Tuesday, Thursday: 2:00 PM - 4:00 PM\nBy appointment',
                         'department_id' => 1,
                     ],
                 ]),
@@ -47,6 +50,7 @@ class FacultyStaffController extends Controller
                 'slug' => 'business-administration',
                 'description' => 'Department of Business Administration',
                 'office_location' => 'Business Building, Room 201',
+                'office_hours' => 'Monday - Friday: 8:00 AM - 5:00 PM',
                 'facultyAndStaff' => collect([
                     (object) [
                         'id' => 3,
@@ -56,6 +60,7 @@ class FacultyStaffController extends Controller
                         'position' => 'Professor',
                         'email' => 'robert.johnson@example.com',
                         'office_location' => 'Business Building, Room 202',
+                        'office_hours' => 'Monday, Wednesday: 1:00 PM - 3:00 PM\nBy appointment',
                         'department_id' => 2,
                     ],
                 ]),
