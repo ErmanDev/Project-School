@@ -3,16 +3,16 @@
 @section('slot')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
     <!-- Featured Carousel Section -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+    <section class="py-0">
+        <div class="w-full">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden">
                 <div class="relative">
-                    <div class="carousel-container relative h-96 overflow-hidden">
+                    <div class="carousel-container relative w-full h-[600px] overflow-hidden">
                         @if($carouselItems->count() > 0)
                             @foreach($carouselItems as $index => $item)
                                 <div class="carousel-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center;' : '' }}">
-                                    <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : 'bg-gradient-to-r from-blue-600 to-purple-600' }} flex items-center justify-center">
-                                        <div class="text-center text-white p-8">
+                                    <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : 'bg-gradient-to-r from-blue-800 to-white' }} flex items-center justify-center">
+                                        <div class="text-center {{ $item->featured_image ? 'text-white' : 'text-gray-900' }} p-8">
                                             <h2 class="text-4xl font-bold mb-4">{{ $item->title }}</h2>
                                             <p class="text-xl mb-6">{{ Str::limit($item->description ?? strip_tags($item->content), 100) }}</p>
                                             @if($item->event_date)
@@ -36,8 +36,8 @@
                         @else
                             <!-- Default welcome slide if no featured items -->
                             <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-100">
-                                <div class="h-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                                    <div class="text-center text-white p-8">
+                                <div class="h-full bg-gradient-to-r from-blue-800 to-white flex items-center justify-center">
+                                    <div class="text-center text-gray-900 p-8">
                                         <h2 class="text-4xl font-bold mb-4">Welcome to San Isidro College</h2>
                                         <p class="text-xl mb-6">Your comprehensive educational management system</p>
                                         <a href="{{ route('about') }}" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
