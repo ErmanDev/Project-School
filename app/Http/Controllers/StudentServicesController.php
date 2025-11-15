@@ -13,10 +13,15 @@ class StudentServicesController extends Controller
      */
     public function index()
     {
-        $services = StudentService::where('is_active', true)
-            ->orderBy('category')
-            ->get()
-            ->groupBy('category');
+        try {
+            $services = StudentService::where('is_active', true)
+                ->orderBy('category')
+                ->get()
+                ->groupBy('category');
+        } catch (\Exception $e) {
+            // If database is not available, use empty collection
+            $services = collect([]);
+        }
 
         return view('student-services.index', compact('services'));
     }
@@ -26,16 +31,20 @@ class StudentServicesController extends Controller
      */
     public function show($slug)
     {
-        $service = StudentService::where('slug', $slug)
-            ->where('is_active', true)
-            ->firstOrFail();
+        try {
+            $service = StudentService::where('slug', $slug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        // Get other services from the same category
-        $relatedServices = StudentService::where('category', $service->category)
-            ->where('id', '!=', $service->id)
-            ->where('is_active', true)
-            ->orderBy('title')
-            ->get();
+            // Get other services from the same category
+            $relatedServices = StudentService::where('category', $service->category)
+                ->where('id', '!=', $service->id)
+                ->where('is_active', true)
+                ->orderBy('title')
+                ->get();
+        } catch (\Exception $e) {
+            abort(404, 'Service not found');
+        }
 
         return view('student-services.show', compact('service', 'relatedServices'));
     }

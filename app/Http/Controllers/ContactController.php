@@ -13,7 +13,12 @@ class ContactController extends Controller
 {
     public function index(): View
     {
-        $departments = Department::orderBy('name')->get();
+        try {
+            $departments = Department::orderBy('name')->get();
+        } catch (\Exception $e) {
+            // If database is not available, use empty collection
+            $departments = collect([]);
+        }
         $mapsEmbedUrl = config('services.google.maps_embed_url');
         return view('contact.index', compact('departments', 'mapsEmbedUrl'));
     }

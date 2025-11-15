@@ -15,11 +15,16 @@ class DownloadsController extends Controller
      */
     public function index()
     {
-        $downloads = Download::where('is_active', true)
-            ->orderBy('category')
-            ->orderBy('order')
-            ->get()
-            ->groupBy('category');
+        try {
+            $downloads = Download::where('is_active', true)
+                ->orderBy('category')
+                ->orderBy('order')
+                ->get()
+                ->groupBy('category');
+        } catch (\Exception $e) {
+            // If database is not available, use empty collection
+            $downloads = collect([]);
+        }
 
         return view('downloads.index', compact('downloads'));
     }
@@ -29,20 +34,24 @@ class DownloadsController extends Controller
      */
     public function download($slug): BinaryFileResponse
     {
-        $download = Download::where('slug', $slug)
-            ->where('is_active', true)
-            ->firstOrFail();
+        try {
+            $download = Download::where('slug', $slug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        // Increment download count
-        $download->incrementDownloadCount();
+            // Increment download count
+            $download->incrementDownloadCount();
 
-        // Get the file path
-        $filePath = storage_path('app/public/' . $download->file_path);
-        
-        if (!file_exists($filePath)) {
-            abort(404, 'File not found');
+            // Get the file path
+            $filePath = storage_path('app/public/' . $download->file_path);
+            
+            if (!file_exists($filePath)) {
+                abort(404, 'File not found');
+            }
+
+            return response()->download($filePath, $download->file_name);
+        } catch (\Exception $e) {
+            abort(404, 'Download not found');
         }
-
-        return response()->download($filePath, $download->file_name);
     }
 }

@@ -13,10 +13,15 @@ class AdmissionsController extends Controller
      */
     public function index()
     {
-        $documents = AdmissionDocument::where('is_active', true)
-            ->orderBy('order')
-            ->get()
-            ->groupBy('category');
+        try {
+            $documents = AdmissionDocument::where('is_active', true)
+                ->orderBy('order')
+                ->get()
+                ->groupBy('category');
+        } catch (\Exception $e) {
+            // If database is not available, use empty collection
+            $documents = collect([]);
+        }
 
         return view('admissions.index', compact('documents'));
     }
@@ -26,16 +31,20 @@ class AdmissionsController extends Controller
      */
     public function show($slug)
     {
-        $document = AdmissionDocument::where('slug', $slug)
-            ->where('is_active', true)
-            ->firstOrFail();
+        try {
+            $document = AdmissionDocument::where('slug', $slug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        // Get other documents from the same category
-        $relatedDocuments = AdmissionDocument::where('category', $document->category)
-            ->where('id', '!=', $document->id)
-            ->where('is_active', true)
-            ->orderBy('order')
-            ->get();
+            // Get other documents from the same category
+            $relatedDocuments = AdmissionDocument::where('category', $document->category)
+                ->where('id', '!=', $document->id)
+                ->where('is_active', true)
+                ->orderBy('order')
+                ->get();
+        } catch (\Exception $e) {
+            abort(404, 'Document not found');
+        }
 
         return view('admissions.show', compact('document', 'relatedDocuments'));
     }

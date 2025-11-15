@@ -13,10 +13,15 @@ class AcademicProgramsController extends Controller
      */
     public function index()
     {
-        $programs = AcademicProgram::where('is_active', true)
-            ->orderBy('order')
-            ->get()
-            ->groupBy('level');
+        try {
+            $programs = AcademicProgram::where('is_active', true)
+                ->orderBy('order')
+                ->get()
+                ->groupBy('level');
+        } catch (\Exception $e) {
+            // If database is not available, use empty collection
+            $programs = collect([]);
+        }
 
         return view('academic-programs.index', compact('programs'));
     }
@@ -26,16 +31,20 @@ class AcademicProgramsController extends Controller
      */
     public function show($slug)
     {
-        $program = AcademicProgram::where('slug', $slug)
-            ->where('is_active', true)
-            ->firstOrFail();
+        try {
+            $program = AcademicProgram::where('slug', $slug)
+                ->where('is_active', true)
+                ->firstOrFail();
 
-        // Get other programs from the same level
-        $relatedPrograms = AcademicProgram::where('level', $program->level)
-            ->where('id', '!=', $program->id)
-            ->where('is_active', true)
-            ->orderBy('order')
-            ->get();
+            // Get other programs from the same level
+            $relatedPrograms = AcademicProgram::where('level', $program->level)
+                ->where('id', '!=', $program->id)
+                ->where('is_active', true)
+                ->orderBy('order')
+                ->get();
+        } catch (\Exception $e) {
+            abort(404, 'Program not found');
+        }
 
         return view('academic-programs.show', compact('program', 'relatedPrograms'));
     }
