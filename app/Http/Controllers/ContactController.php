@@ -14,11 +14,11 @@ class ContactController extends Controller
     {
         // Static departments data
         $departments = collect([
-            (object) ['id' => 1, 'name' => 'Administration', 'slug' => 'administration', 'email' => 'admin@example.com'],
-            (object) ['id' => 2, 'name' => 'Academic Affairs', 'slug' => 'academic-affairs', 'email' => 'academic@example.com'],
-            (object) ['id' => 3, 'name' => 'Student Services', 'slug' => 'student-services', 'email' => 'studentservices@example.com'],
-            (object) ['id' => 4, 'name' => 'Admissions', 'slug' => 'admissions', 'email' => 'admissions@example.com'],
-            (object) ['id' => 5, 'name' => 'Registrar', 'slug' => 'registrar', 'email' => 'registrar@example.com'],
+            (object) ['id' => 1, 'name' => 'Administration', 'slug' => 'administration', 'email' => 'admin@example.com', 'phone' => '(555) 123-1001'],
+            (object) ['id' => 2, 'name' => 'Academic Affairs', 'slug' => 'academic-affairs', 'email' => 'academic@example.com', 'phone' => '(555) 123-1002'],
+            (object) ['id' => 3, 'name' => 'Student Services', 'slug' => 'student-services', 'email' => 'studentservices@example.com', 'phone' => '(555) 123-1003'],
+            (object) ['id' => 4, 'name' => 'Admissions', 'slug' => 'admissions', 'email' => 'admissions@example.com', 'phone' => '(555) 123-1004'],
+            (object) ['id' => 5, 'name' => 'Registrar', 'slug' => 'registrar', 'email' => 'registrar@example.com', 'phone' => '(555) 123-1005'],
         ]);
         
         $mapsEmbedUrl = config('services.google.maps_embed_url');
