@@ -15,10 +15,14 @@ php artisan config:cache || echo "Warning: config:cache failed - check environme
 php artisan route:cache || echo "Warning: route:cache failed"
 php artisan view:cache || echo "Warning: view:cache failed"
 
-# Run migrations (skip if database not configured)
-php artisan migrate --force || echo "Warning: migrations failed - check database configuration"
+# Skip migrations if no database configured
+if [ -n "${DB_CONNECTION}" ] || [ -n "${DB_URL}" ] || [ -n "${DATABASE_URL}" ]; then
+    echo "Database configured, running migrations..."
+    php artisan migrate --force || echo "Warning: migrations failed - check database configuration"
+else
+    echo "No database configured, skipping migrations..."
+fi
 
 # Start the server
 echo "Starting Laravel server on port ${PORT:-8000}..."
 exec php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
-
