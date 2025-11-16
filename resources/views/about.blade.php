@@ -218,42 +218,42 @@
             </div>
 
             <!-- Organizational Chart -->
-            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-                <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Organizational Structure</h3>
-                <div class="flex flex-col items-center space-y-4">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center">Organizational Structure</h3>
+                <div class="flex flex-col items-center space-y-3 sm:space-y-4">
                     <!-- Level 1 -->
-                    <div class="w-64 p-4 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-lg text-white text-center font-semibold">
+                    <div class="w-full max-w-xs sm:max-w-sm md:w-64 p-3 sm:p-4 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-lg text-white text-center text-sm sm:text-base font-semibold">
                         School President
                     </div>
                     
                     <!-- Level 2 -->
-                    <div class="flex space-x-4">
-                        <div class="w-48 p-4 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg text-white text-center font-semibold">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-stretch gap-3 sm:gap-4 w-full max-w-2xl">
+                        <div class="w-full sm:w-48 p-3 sm:p-4 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg text-white text-center text-sm sm:text-base font-semibold">
                             VP Academic Affairs
                         </div>
-                        <div class="w-48 p-4 bg-gradient-to-r from-purple-600 to-violet-600 rounded-lg text-white text-center font-semibold">
+                        <div class="w-full sm:w-48 p-3 sm:p-4 bg-gradient-to-r from-purple-600 to-violet-600 rounded-lg text-white text-center text-sm sm:text-base font-semibold">
                             VP Administrative
                         </div>
-                        <div class="w-48 p-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg text-white text-center font-semibold">
+                        <div class="w-full sm:w-48 p-3 sm:p-4 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg text-white text-center text-sm sm:text-base font-semibold">
                             VP Finance
                         </div>
                     </div>
                     
                     <!-- Level 3 -->
-                    <div class="grid grid-cols-5 gap-2 mt-4">
-                        <div class="w-36 p-3 bg-blue-100 dark:bg-blue-900 rounded-lg text-gray-900 dark:text-white text-center text-sm font-medium">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3 mt-2 sm:mt-4 w-full max-w-4xl">
+                        <div class="w-full p-2 sm:p-3 bg-blue-100 dark:bg-blue-900 rounded-lg text-gray-900 dark:text-white text-center text-xs sm:text-sm font-medium">
                             Deans
                         </div>
-                        <div class="w-36 p-3 bg-green-100 dark:bg-green-900 rounded-lg text-gray-900 dark:text-white text-center text-sm font-medium">
+                        <div class="w-full p-2 sm:p-3 bg-green-100 dark:bg-green-900 rounded-lg text-gray-900 dark:text-white text-center text-xs sm:text-sm font-medium">
                             Directors
                         </div>
-                        <div class="w-36 p-3 bg-purple-100 dark:bg-purple-900 rounded-lg text-gray-900 dark:text-white text-center text-sm font-medium">
+                        <div class="w-full p-2 sm:p-3 bg-purple-100 dark:bg-purple-900 rounded-lg text-gray-900 dark:text-white text-center text-xs sm:text-sm font-medium">
                             Coordinators
                         </div>
-                        <div class="w-36 p-3 bg-orange-100 dark:bg-orange-900 rounded-lg text-gray-900 dark:text-white text-center text-sm font-medium">
+                        <div class="w-full p-2 sm:p-3 bg-orange-100 dark:bg-orange-900 rounded-lg text-gray-900 dark:text-white text-center text-xs sm:text-sm font-medium">
                             Faculty
                         </div>
-                        <div class="w-36 p-3 bg-red-100 dark:bg-red-900 rounded-lg text-gray-900 dark:text-white text-center text-sm font-medium">
+                        <div class="w-full p-2 sm:p-3 bg-red-100 dark:bg-red-900 rounded-lg text-gray-900 dark:text-white text-center text-xs sm:text-sm font-medium">
                             Staff
                         </div>
                     </div>

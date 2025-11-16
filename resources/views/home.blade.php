@@ -10,9 +10,9 @@
                     <div class="carousel-container relative w-full h-[600px] overflow-hidden">
                         @if($carouselItems->count() > 0)
                             @foreach($carouselItems as $index => $item)
-                                <div class="carousel-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center;' : '' }}">
-                                    <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : 'bg-gradient-to-r from-blue-800 to-white' }} flex items-center justify-center">
-                                        <div class="text-center {{ $item->featured_image ? 'text-white' : 'text-gray-900' }} p-8">
+                                <div class="carousel-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
+                                    <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : ($index === 0 ? 'bg-black bg-opacity-60' : 'bg-gradient-to-r from-blue-800 to-white') }} flex items-center justify-center" style="{{ !$item->featured_image && $index === 0 ? 'background-image: url(' . asset('images/png/sic_1.png') . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
+                                        <div class="text-center {{ $item->featured_image || $index === 0 ? 'text-white' : 'text-gray-900' }} p-8">
                                             <h2 class="text-4xl font-bold mb-4">{{ $item->title }}</h2>
                                             <p class="text-xl mb-6">{{ Str::limit($item->description ?? strip_tags($item->content), 100) }}</p>
                                             @if($item->event_date)
@@ -36,8 +36,8 @@
                         @else
                             <!-- Default welcome slide if no featured items -->
                             <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-100">
-                                <div class="h-full bg-gradient-to-r from-blue-800 to-white flex items-center justify-center">
-                                    <div class="text-center text-gray-900 p-8">
+                                <div class="h-full bg-black bg-opacity-80 flex items-center justify-center" style="background-image: url('{{ asset('images/png/sic_1.png') }}'); background-size: cover; background-position: center center; background-repeat: no-repeat; width: 100%; height: 100%;">
+                                    <div class="text-center text-white p-8">
                                         <h2 class="text-4xl font-bold mb-4">Welcome to San Isidro College</h2>
                                         <p class="text-xl mb-6">Your comprehensive educational management system</p>
                                         <a href="{{ route('about') }}" class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
@@ -143,30 +143,30 @@
     <section class="py-12 bg-white dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Message from the School President</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">Message from the School President</h2>
                 <div class="w-24 h-1 bg-indigo-600 mx-auto mb-8"></div>
             </div>
             
             <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 shadow-lg">
-                    <div class="flex items-start space-x-6">
-                          <img src="{{ asset('images/png/nobg_logo.png') }}" class="w-24 h-24" alt="Logo" />
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Dr. John Peterson</h3>
-                            <h4 class="text-lg text-indigo-600 dark:text-indigo-400 mb-4">School President</h4>
-                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+                          <img src="{{ asset('images/png/nobg_logo.png') }}" class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0" alt="Logo" />
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-4">Dr. John Peterson</h3>
+                            <h4 class="text-base sm:text-lg text-indigo-600 dark:text-indigo-400 mb-3 sm:mb-4">School President</h4>
+                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
                                 "Welcome to our educational community! At San Isidro College, we are committed to providing 
                                 excellence in education and fostering an environment where every student can thrive. 
                                 Our comprehensive management system ensures that students, parents, and educators 
                                 have access to the tools they need for academic success."
                             </p>
-                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                            <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
                                 "We believe in the power of technology to enhance learning experiences and streamline 
                                 educational processes. Together, we are building a brighter future for our students."
                             </p>
-                            <a href="{{ route('about') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors duration-200">
+                            <a href="{{ route('about') }}" class="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm sm:text-base font-semibold rounded-lg transition-colors duration-200">
                                 Learn More About Us
-                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                 </svg>
                             </a>
