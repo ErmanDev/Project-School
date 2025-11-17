@@ -2,6 +2,169 @@
 
 @section('slot')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <!-- Header and Navigation Container -->
+    <div class="sticky top-0 z-50">
+        <!-- Header with Logo and University Name -->
+        <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <img src="{{ asset('images/png/nobg_logo.png') }}" class="w-16 h-16" alt="San Isidro College Logo" />
+                        <div>
+                            <h1 class="text-2xl font-bold text-blue-900 dark:text-white">SAN ISIDRO COLLEGE</h1>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Malaybalay City, Bukidnon 8700, Philippines</p>
+                        </div>
+                    </div>
+                    <div class="hidden lg:flex items-center space-x-4">
+                        <!-- Official seals/logos can be added here if needed -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Bar -->
+        <nav x-data="{ openDropdown: null, mobileMenuOpen: false }" 
+             class="bg-blue-900 dark:bg-blue-950 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-14">
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-1 lg:space-x-4">
+                    <!-- Academic Programs -->
+                    <a href="{{ route('academic-programs.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Academic Programs
+                    </a>
+
+                    <!-- Admissions -->
+                    <a href="{{ route('admissions.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Admissions
+                    </a>
+
+                    <!-- News & Events -->
+                    <a href="{{ route('news-and-events.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        News & Events
+                    </a>
+
+                    <!-- Student Services -->
+                    <a href="{{ route('student-services.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Student Services
+                    </a>
+
+                    <!-- Faculty & Staff Directory -->
+                    <a href="{{ route('directory.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Faculty & Staff
+                    </a>
+
+                    <!-- Alumni Corner -->
+                    <a href="{{ route('alumni.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Alumni
+                    </a>
+
+                    <!-- Downloads -->
+                    <a href="{{ route('downloads.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Downloads
+                    </a>
+
+                    <!-- Contact Us -->
+                    <a href="{{ route('contact.index') }}" class="px-3 py-2 text-white hover:bg-blue-800 dark:hover:bg-blue-900 transition-colors duration-200 text-sm lg:text-base">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button - Hamburger -->
+                <button 
+                    @click="mobileMenuOpen = !mobileMenuOpen; openDropdown = mobileMenuOpen ? 'mobile' : null" 
+                    class="lg:hidden relative z-50 flex flex-col items-center justify-center w-10 h-10 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 rounded-md transition-all duration-300"
+                    :class="mobileMenuOpen ? 'bg-blue-800' : 'hover:bg-blue-800'"
+                    aria-label="Toggle mobile menu">
+                    <!-- Hamburger Icon -->
+                    <span class="sr-only">Open main menu</span>
+                    <div class="absolute w-6 h-6 flex flex-col justify-center items-center">
+                        <!-- Top line -->
+                        <span 
+                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                            :class="mobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'">
+                        </span>
+                        <!-- Middle line -->
+                        <span 
+                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                            :class="mobileMenuOpen ? 'opacity-0' : 'opacity-100'">
+                        </span>
+                        <!-- Bottom line -->
+                        <span 
+                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                            :class="mobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'">
+                        </span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div 
+                x-show="mobileMenuOpen"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-2"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-150"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-2"
+                @click.away="mobileMenuOpen = false; openDropdown = null"
+                class="lg:hidden bg-blue-800 dark:bg-blue-900 border-t border-blue-700 dark:border-blue-800"
+                style="display: none;">
+                <div class="px-2 pt-2 pb-4 space-y-1">
+                    <a 
+                        href="{{ route('academic-programs.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Academic Programs
+                    </a>
+                    <a 
+                        href="{{ route('admissions.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Admissions
+                    </a>
+                    <a 
+                        href="{{ route('news-and-events.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        News & Events
+                    </a>
+                    <a 
+                        href="{{ route('student-services.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Student Services
+                    </a>
+                    <a 
+                        href="{{ route('directory.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Faculty & Staff
+                    </a>
+                    <a 
+                        href="{{ route('alumni.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Alumni
+                    </a>
+                    <a 
+                        href="{{ route('downloads.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Downloads
+                    </a>
+                    <a 
+                        href="{{ route('contact.index') }}" 
+                        @click="mobileMenuOpen = false"
+                        class="block px-4 py-3 text-white hover:bg-blue-700 dark:hover:bg-blue-800 rounded-md transition-colors duration-200 font-medium">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+        </nav>
+    </div>
+
     <!-- Featured Carousel Section -->
     <section class="py-0">
         <div class="w-full">
@@ -177,121 +340,6 @@
         </div>
     </section>
 
-    <!-- Quick Access Links Section -->
-    <section class="py-12 bg-gray-50 dark:bg-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Quick Access</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-400">Navigate to important sections quickly</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Quick Link 1 -->
-                <a href="{{ route('academic-programs.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Academic Programs</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Explore our programs</p>
-                    </div>
-                </a>
-                
-                <!-- Quick Link 5 -->
-                <a href="{{ route('directory.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-indigo-200 dark:group-hover:bg-indigo-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M16 11V7a4 4 0 10-8 0v4M5 11h14v10H5V11z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Faculty & Staff Directory</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Find departments and personnel</p>
-                    </div>
-                </a>
-
-                <!-- Quick Link 6 -->
-                <a href="{{ route('alumni.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-amber-100 dark:bg-amber-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-200 dark:group-hover:bg-amber-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M5 11h14M5 19h14M7 15h10" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Alumni Corner</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Reunions, achievements, and more</p>
-                    </div>
-                </a>
-
-                <!-- Quick Link 7 -->
-                <a href="{{ route('contact.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-sky-100 dark:bg-sky-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-sky-200 dark:group-hover:bg-sky-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-sky-600 dark:text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Us</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Send a message or find us</p>
-                    </div>
-                </a>
-                
-                <!-- Quick Link 2 -->
-                <a href="{{ route('admissions.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 dark:group-hover:bg-green-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Admissions</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Application forms and guidelines</p>
-                    </div>
-                </a>
-                
-                <!-- Quick Link 3 -->
-                <a href="{{ route('news-and-events.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 dark:group-hover:bg-purple-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">News & Events</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Latest campus news and activities</p>
-                    </div>
-                </a>
-                
-                <!-- Quick Link 4 -->
-                <a href="{{ route('student-services.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Student Services</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Support and resources</p>
-                    </div>
-                </a>
-                
-                <!-- Quick Link 8 - Downloads -->
-                <a href="{{ route('downloads.index') }}" class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-200 group">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-pink-100 dark:bg-pink-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-pink-200 dark:group-hover:bg-pink-800 transition-colors duration-200">
-                            <svg class="w-8 h-8 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Downloads</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Calendars, forms & policies</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
 
     <!-- Published Announcements Section -->
     @if($announcements->count() > 0)
