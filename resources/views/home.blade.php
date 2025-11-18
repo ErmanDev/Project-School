@@ -3,7 +3,7 @@
 @section('slot')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
     <!-- Header and Navigation Container -->
-    <div class="sticky top-0 z-50">
+    <div x-data="{ openDropdown: null, mobileMenuOpen: false, searchOpen: false }" class="sticky top-0 z-50">
         <!-- Header with Logo and University Name -->
         <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -23,10 +23,10 @@
         </header>
 
         <!-- Navigation Bar -->
-        <nav x-data="{ openDropdown: null, mobileMenuOpen: false }" 
+        <nav 
              class="bg-blue-900 dark:bg-blue-950 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-14">
+            <div class="flex items-center lg:justify-between justify-end h-14">
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-1 lg:space-x-4">
                     <!-- Academic Programs -->
@@ -70,32 +70,46 @@
                     </a>
                 </div>
 
-                <!-- Mobile Menu Button - Hamburger -->
-                <button 
-                    @click="mobileMenuOpen = !mobileMenuOpen; openDropdown = mobileMenuOpen ? 'mobile' : null" 
-                    class="lg:hidden relative z-50 flex flex-col items-center justify-center w-10 h-10 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 rounded-md transition-all duration-300"
-                    :class="mobileMenuOpen ? 'bg-blue-800' : 'hover:bg-blue-800'"
-                    aria-label="Toggle mobile menu">
-                    <!-- Hamburger Icon -->
-                    <span class="sr-only">Open main menu</span>
-                    <div class="absolute w-6 h-6 flex flex-col justify-center items-center">
-                        <!-- Top line -->
-                        <span 
-                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
-                            :class="mobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'">
-                        </span>
-                        <!-- Middle line -->
-                        <span 
-                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
-                            :class="mobileMenuOpen ? 'opacity-0' : 'opacity-100'">
-                        </span>
-                        <!-- Bottom line -->
-                        <span 
-                            class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
-                            :class="mobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'">
-                        </span>
-                    </div>
-                </button>
+                <!-- Mobile Icons Container (Search + Hamburger) -->
+                <div class="lg:hidden flex items-center justify-end space-x-2">
+                    <!-- Search Icon Button -->
+                    <button 
+                        @click="searchOpen = !searchOpen"
+                        class="relative z-50 flex items-center justify-center w-10 h-10 text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 rounded-md transition-all duration-300"
+                        :class="searchOpen ? 'bg-blue-800' : ''"
+                        aria-label="Search">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Mobile Menu Button - Hamburger -->
+                    <button 
+                        @click="mobileMenuOpen = !mobileMenuOpen; openDropdown = mobileMenuOpen ? 'mobile' : null" 
+                        class="relative z-50 flex flex-col items-center justify-center w-10 h-10 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-900 rounded-md transition-all duration-300"
+                        :class="mobileMenuOpen ? 'bg-blue-800' : 'hover:bg-blue-800'"
+                        aria-label="Toggle mobile menu">
+                        <!-- Hamburger Icon -->
+                        <span class="sr-only">Open main menu</span>
+                        <div class="absolute w-6 h-6 flex flex-col justify-center items-center">
+                            <!-- Top line -->
+                            <span 
+                                class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                                :class="mobileMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'">
+                            </span>
+                            <!-- Middle line -->
+                            <span 
+                                class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                                :class="mobileMenuOpen ? 'opacity-0' : 'opacity-100'">
+                            </span>
+                            <!-- Bottom line -->
+                            <span 
+                                class="block absolute h-0.5 w-6 bg-white transform transition-all duration-300 ease-in-out"
+                                :class="mobileMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'">
+                            </span>
+                        </div>
+                    </button>
+                </div>
             </div>
 
             <!-- Mobile Menu -->
@@ -163,6 +177,66 @@
             </div>
         </div>
         </nav>
+
+        <!-- Search Overlay -->
+        <div 
+            x-show="searchOpen"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            @click.away="searchOpen = false"
+            @keydown.escape.window="searchOpen = false"
+            class="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-50"
+            style="display: none;">
+            <div 
+                x-show="searchOpen"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 -translate-y-4"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:leave="transition ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0"
+                x-transition:leave-end="opacity-0 -translate-y-4"
+                class="bg-white dark:bg-gray-800 shadow-xl rounded-b-lg mx-4 mt-20"
+                @click.stop>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Search</h3>
+                        <button 
+                            @click="searchOpen = false"
+                            class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <form action="/search" method="GET" class="space-y-4">
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                name="q" 
+                                placeholder="What are you looking for?" 
+                                autofocus
+                                class="w-full px-4 py-3 pl-12 pr-4 text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                                x-ref="searchInput"
+                                x-init="$watch('searchOpen', value => value && $nextTick(() => $refs.searchInput.focus()))">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <button 
+                            type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Featured Carousel Section -->
