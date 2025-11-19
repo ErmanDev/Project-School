@@ -29,7 +29,7 @@
         </script>
         @endif
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans antialiased theme-app">
         @if(request()->routeIs('home') || request()->routeIs('about') || request()->routeIs('academic-programs.*') || request()->routeIs('admissions.*') || request()->routeIs('news-and-events.*') || request()->routeIs('student-services.*') || request()->routeIs('directory.*') || request()->routeIs('alumni.*') || request()->routeIs('contact.*') || request()->routeIs('downloads.*'))
             @yield('slot')
         @else
@@ -40,7 +40,7 @@
                     </a>
                 </div>
 
-                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+                <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                     {{ $slot }}
                 </div>
             </div>

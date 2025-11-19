@@ -6,3 +6,121 @@
 [x-cloak] {
     display: none !important;
 }
+
+:root {
+    --theme-primary: #0b2f6b;
+    --theme-secondary: #1d4ed8;
+    --theme-accent: #2563eb;
+    --theme-surface: #ffffff;
+    --theme-surface-alt: #f5f7fb;
+    --theme-border: #dbeafe;
+    --theme-muted: #4b5563;
+}
+
+@layer base {
+    body.theme-app {
+        background-color: var(--theme-surface);
+        color: var(--theme-primary);
+    }
+
+    body.theme-app h1,
+    body.theme-app h2,
+    body.theme-app h3,
+    body.theme-app h4,
+    body.theme-app h5,
+    body.theme-app h6 {
+        color: var(--theme-primary);
+    }
+
+    body.theme-app main,
+    body.theme-app section,
+    body.theme-app header {
+        background-color: var(--theme-surface);
+    }
+
+    body.theme-app a {
+        color: var(--theme-secondary);
+    }
+
+    body.theme-app a:hover {
+        color: var(--theme-accent);
+    }
+
+    body.theme-app input,
+    body.theme-app textarea,
+    body.theme-app select {
+        background-color: #ffffff;
+        border-color: var(--theme-border);
+        color: var(--theme-primary);
+    }
+
+    body.theme-app input:focus,
+    body.theme-app textarea:focus,
+    body.theme-app select:focus {
+        border-color: var(--theme-secondary);
+        box-shadow: 0 0 0 1px var(--theme-secondary);
+    }
+
+    body.theme-app .bg-white,
+    body.theme-app [class*="bg-white/"] {
+        background-color: var(--theme-surface) !important;
+    }
+
+    body.theme-app .bg-gray-50,
+    body.theme-app .bg-gray-100,
+    body.theme-app .bg-gray-200,
+    body.theme-app .bg-gray-300,
+    body.theme-app [class*="bg-gray-50/"],
+    body.theme-app [class*="bg-gray-100/"],
+    body.theme-app [class*="bg-gray-200/"] {
+        background-color: var(--theme-surface-alt) !important;
+    }
+
+    body.theme-app .border-gray-100,
+    body.theme-app .border-gray-200,
+    body.theme-app .border-gray-300 {
+        border-color: var(--theme-border) !important;
+    }
+
+    body.theme-app .text-gray-500,
+    body.theme-app .text-gray-600,
+    body.theme-app .text-gray-700,
+    body.theme-app .text-gray-800,
+    body.theme-app .text-gray-900 {
+        color: var(--theme-muted) !important;
+    }
+}
+
+@layer components {
+    .theme-card {
+        @apply bg-white border border-blue-100 rounded-2xl shadow-lg;
+    }
+
+    .theme-section {
+        @apply bg-white border border-blue-100 rounded-3xl shadow-md;
+    }
+
+    .theme-card-header {
+        @apply text-blue-900 font-semibold;
+    }
+
+    .theme-btn-primary {
+        @apply inline-flex items-center justify-center px-4 py-2 font-semibold text-white rounded-lg transition-colors bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+    }
+
+    .theme-btn-secondary {
+        @apply inline-flex items-center justify-center px-4 py-2 font-semibold text-blue-900 bg-blue-50 rounded-lg border border-blue-100 transition-colors hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400;
+    }
+
+    .theme-chip {
+        @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-700 border border-blue-100;
+    }
+
+    .theme-table {
+        @apply bg-white border border-blue-100 rounded-2xl overflow-hidden;
+    }
+
+    .theme-input {
+        @apply w-full rounded-lg border border-blue-100 bg-white text-blue-900 focus:border-blue-400 focus:ring focus:ring-blue-100;
+    }
+}
