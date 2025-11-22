@@ -87,9 +87,18 @@ class AcademicProgramsController extends Controller
     /**
      * Display a listing of all academic programs
      */
-    public function index()
+    public function index(Request $request)
     {
-        $programs = $this->getStaticData()->groupBy('level');
+        $allPrograms = $this->getStaticData();
+        
+        // Filter by level if provided
+        if ($request->has('level') && in_array($request->level, ['undergraduate', 'graduate'])) {
+            $filteredPrograms = $allPrograms->where('level', $request->level);
+            $programs = collect([$request->level => $filteredPrograms]);
+        } else {
+            $programs = $allPrograms->groupBy('level');
+        }
+        
         return view('academic-programs.index', compact('programs'));
     }
 

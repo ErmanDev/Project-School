@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentServicesController;
+use App\Http\Controllers\FacultyStaffController;
 
 class HomeController extends Controller
 {
@@ -182,6 +184,28 @@ class HomeController extends Controller
             ],
         ]);
 
-        return view('home', compact('carouselItems', 'upcomingEvents', 'announcements'));
+        // Get student service categories for navigation dropdown
+        $studentServiceCategories = [
+            (object) [
+                'title' => 'Guidance and Counseling',
+                'category' => 'guidance',
+                'url' => route('student-services.index', ['category' => 'guidance']),
+            ],
+            (object) [
+                'title' => 'Library Resources & Digital Services',
+                'category' => 'library',
+                'url' => route('student-services.index', ['category' => 'library']),
+            ],
+            (object) [
+                'title' => 'Student Organizations & Activities',
+                'category' => 'organizations',
+                'url' => route('student-services.index', ['category' => 'organizations']),
+            ],
+        ];
+
+        // Get departments for Faculty & Staff navigation dropdown
+        $departments = FacultyStaffController::getDepartments();
+
+        return view('home', compact('carouselItems', 'upcomingEvents', 'announcements', 'studentServiceCategories', 'departments'));
     }
 }

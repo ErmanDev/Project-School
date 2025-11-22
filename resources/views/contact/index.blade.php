@@ -85,7 +85,7 @@
                                             @if($dept->phone) <span class="ml-2">{{ $dept->phone }}</span>@endif
                                         </div>
                                     </div>
-                                    <a href="{{ route('directory.department', $dept->slug) }}" class="text-sky-600 dark:text-sky-400 hover:underline text-sm">View</a>
+                                    <span class="text-sky-600 dark:text-sky-400 text-sm">View</span>
                                 </li>
                             @endforeach
                         </ul>

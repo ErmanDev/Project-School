@@ -7,6 +7,34 @@ use Illuminate\Http\Request;
 class FacultyStaffController extends Controller
 {
     /**
+     * Get all departments (public method for use in other controllers)
+     */
+    public static function getDepartments()
+    {
+        // Try to get from database first
+        $departments = \App\Models\Department::orderBy('name')
+            ->get(['id', 'name', 'slug']);
+        
+        // If database is empty, use static data
+        if ($departments->isEmpty()) {
+            $controller = new self();
+            $reflection = new \ReflectionClass($controller);
+            $method = $reflection->getMethod('getStaticData');
+            $method->setAccessible(true);
+            $staticData = $method->invoke($controller);
+            $departments = $staticData->map(function($dept) {
+                return (object) [
+                    'id' => $dept->id,
+                    'name' => $dept->name,
+                    'slug' => $dept->slug,
+                ];
+            });
+        }
+        
+        return $departments;
+    }
+
+    /**
      * Get static departments and faculty data
      */
     private function getStaticData()

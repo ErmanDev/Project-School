@@ -24,9 +24,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
-// Academic Programs Routes
-Route::get('/academic-programs', [AcademicProgramsController::class, 'index'])->name('academic-programs.index');
-Route::get('/academic-programs/{slug}', [AcademicProgramsController::class, 'show'])->name('academic-programs.show');
+// Academic Programs Routes - Removed
+// Route::get('/academic-programs', [AcademicProgramsController::class, 'index'])->name('academic-programs.index');
+// Route::get('/academic-programs/{slug}', [AcademicProgramsController::class, 'show'])->name('academic-programs.show');
 
 // Admissions Routes
 Route::get('/admissions', [AdmissionsController::class, 'index'])->name('admissions.index');
@@ -40,10 +40,10 @@ Route::get('/news-and-events/{slug}', [NewsAndEventsController::class, 'show'])-
 Route::get('/student-services', [StudentServicesController::class, 'index'])->name('student-services.index');
 Route::get('/student-services/{slug}', [StudentServicesController::class, 'show'])->name('student-services.show');
 
-// Faculty & Staff Directory Routes (public)
-Route::get('/directory', [FacultyStaffController::class, 'index'])->name('directory.index');
-Route::get('/directory/department/{slug}', [FacultyStaffController::class, 'showDepartment'])->name('directory.department');
-Route::get('/directory/person/{slug}', [FacultyStaffController::class, 'showPerson'])->name('directory.person');
+// Faculty & Staff Directory Routes - Removed
+// Route::get('/directory', [FacultyStaffController::class, 'index'])->name('directory.index');
+// Route::get('/directory/department/{slug}', [FacultyStaffController::class, 'showDepartment'])->name('directory.department');
+// Route::get('/directory/person/{slug}', [FacultyStaffController::class, 'showPerson'])->name('directory.person');
 
 // Alumni Corner (public)
 Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni.index');

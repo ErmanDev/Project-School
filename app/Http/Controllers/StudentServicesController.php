@@ -8,6 +8,38 @@ use Illuminate\Http\Request;
 class StudentServicesController extends Controller
 {
     /**
+     * Get all active student services (public method for use in other controllers)
+     */
+    public static function getActiveServices()
+    {
+        // Try to get from database first
+        $services = \App\Models\StudentService::where('is_active', true)
+            ->orderBy('title')
+            ->get(['id', 'title', 'slug']);
+        
+        // If database is empty, use static data
+        if ($services->isEmpty()) {
+            $controller = new self();
+            $reflection = new \ReflectionClass($controller);
+            $method = $reflection->getMethod('getStaticData');
+            $method->setAccessible(true);
+            $staticServices = $method->invoke($controller);
+            $services = $staticServices->where('is_active', true)
+                ->sortBy('title')
+                ->values()
+                ->map(function($service) {
+                    return (object) [
+                        'id' => $service->id,
+                        'title' => $service->title,
+                        'slug' => $service->slug,
+                    ];
+                });
+        }
+        
+        return $services;
+    }
+
+    /**
      * Get static student services data
      */
     private function getStaticData()
@@ -156,9 +188,18 @@ class StudentServicesController extends Controller
     /**
      * Display a listing of all student services
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = $this->getStaticData()->groupBy('category');
+        $allServices = $this->getStaticData();
+        
+        // Filter by category if provided
+        if ($request->has('category') && in_array($request->category, ['guidance', 'library', 'organizations'])) {
+            $filteredServices = $allServices->where('category', $request->category);
+            $services = collect([$request->category => $filteredServices]);
+        } else {
+            $services = $allServices->groupBy('category');
+        }
+        
         return view('student-services.index', compact('services'));
     }
 
