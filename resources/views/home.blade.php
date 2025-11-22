@@ -576,8 +576,9 @@
                             @foreach($carouselItems as $index => $item)
                                 <div class="carousel-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
                 <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : ($index === 0 ? 'bg-black bg-opacity-60' : 'bg-gradient-to-r from-blue-900 to-white') }} flex items-center justify-center" style="{{ !$item->featured_image && $index === 0 ? 'background-image: url(' . asset('images/png/sic_1.png') . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
-                                        <div class="text-center {{ $item->featured_image || $index === 0 ? 'text-white' : 'text-gray-900' }} p-4 sm:p-6 md:p-8">
-                                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">{{ $item->title }}</h2>
+                                        <div class="text-center text-white p-4 sm:p-6 md:p-8">
+                                            <p class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-white">{{ $item->title }}</p>
+                                           
                                             <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6">{{ Str::limit($item->description ?? strip_tags($item->content), 100) }}</p>
                                             @if($item->event_date)
                                                 <p class="text-sm sm:text-base md:text-lg mb-3 sm:mb-4">

@@ -24,12 +24,15 @@
     }
 
     body.theme-app h1,
-    body.theme-app h2,
     body.theme-app h3,
     body.theme-app h4,
     body.theme-app h5,
     body.theme-app h6 {
         color: var(--theme-primary);
+    }
+
+    body.theme-app h2 {
+        color: #111827; /* gray-900 */
     }
 
     body.theme-app main,
