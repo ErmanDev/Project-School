@@ -9,11 +9,11 @@
 
 :root {
     --theme-primary: #0b2f6b;
-    --theme-secondary: #1d4ed8;
-    --theme-accent: #2563eb;
-    --theme-surface: #ffffff;
+    --theme-secondary: #2c75d1;
+    --theme-accent: #235ea7;
+    --theme-surface: #f5f5f5;
     --theme-surface-alt: #f5f7fb;
-    --theme-border: #dbeafe;
+    --theme-border: #d1e1f7;
     --theme-muted: #4b5563;
 }
 
@@ -52,7 +52,7 @@
     body.theme-app input,
     body.theme-app textarea,
     body.theme-app select {
-        background-color: #ffffff;
+        background-color: #f5f5f5;
         border-color: var(--theme-border);
         color: var(--theme-primary);
     }

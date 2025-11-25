@@ -95,7 +95,7 @@
                                         <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{{ $item->description }}</p>
                                     @endif
                                     <a href="{{ route('news-and-events.show', $item->slug) }}" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
-                                        Read More →s
+                                        Read More →
                                     </a>
                                 </div>
                             </div>

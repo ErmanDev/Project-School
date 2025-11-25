@@ -32,28 +32,28 @@
             </div>
             
             <div class="max-w-4xl mx-auto">
-                <div class="prose prose-lg dark:prose-invert">
-                    <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-8 shadow-lg">
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                <div class="prose prose-lg">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <p class="text-gray-900 leading-relaxed mb-6">
                             San Isidro College was founded in 1949 with a vision to provide quality education to the local community. 
                             Starting with just 50 students, the college has grown into a premier educational institution serving over 2,500 students annually.
                         </p>
-                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                        <p class="text-gray-900 leading-relaxed mb-6">
                             Over the decades, we have remained committed to academic excellence, character formation, and community service. 
                             Our graduates have gone on to become leaders in various fields, contributing to the development of our nation.
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                            <div class="text-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow">
-                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">1949</div>
-                                <div class="text-gray-600 dark:text-gray-300">Founded</div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <div class="text-3xl font-bold text-indigo-600 mb-2">1949</div>
+                                <div class="text-gray-900">Founded</div>
                             </div>
-                            <div class="text-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow">
-                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">70+</div>
-                                <div class="text-gray-600 dark:text-gray-300">Years of Excellence</div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <div class="text-3xl font-bold text-indigo-600 mb-2">70+</div>
+                                <div class="text-gray-900">Years of Excellence</div>
                             </div>
-                            <div class="text-center p-4 bg-white dark:bg-gray-700 rounded-lg shadow">
-                                <div class="text-3xl font-bold text-indigo-600 dark:text-indigo-400 mb-2">15,000+</div>
-                                <div class="text-gray-600 dark:text-gray-300">Graduates</div>
+                            <div class="text-center p-4 bg-white rounded-lg shadow">
+                                <div class="text-3xl font-bold text-indigo-600 mb-2">15,000+</div>
+                                <div class="text-gray-900">Graduates</div>
                             </div>
                         </div>
                     </div>

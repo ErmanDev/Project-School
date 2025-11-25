@@ -29,8 +29,9 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 // Route::get('/academic-programs/{slug}', [AcademicProgramsController::class, 'show'])->name('academic-programs.show');
 
 // Admissions Routes
-Route::get('/admissions', [AdmissionsController::class, 'index'])->name('admissions.index');
-Route::get('/admissions/{slug}', [AdmissionsController::class, 'show'])->name('admissions.show');
+Route::get('/admissions/requirements', [AdmissionsController::class, 'requirements'])->name('admissions.requirements');
+Route::get('/admissions/pre-registration', [AdmissionsController::class, 'preRegistration'])->name('admissions.pre-registration');
+Route::get('/admissions/enrollment-form', [AdmissionsController::class, 'enrollmentForm'])->name('admissions.enrollment-form');
 
 // News & Events Routes
 Route::get('/news-and-events', [NewsAndEventsController::class, 'index'])->name('news-and-events.index');

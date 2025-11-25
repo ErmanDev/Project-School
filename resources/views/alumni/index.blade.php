@@ -14,7 +14,7 @@
                 <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">Alumni Corner</h1>
                 <p class="text-lg text-gray-600 dark:text-gray-400">News, reunions, and achievements of our graduates</p>
             <div class="mt-6">
-                <a href="{{ $alumniSiteUrl }}" target="_blank" class="inline-flex items-center px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors duration-200">
+                <a href="{{ $alumniSiteUrl }}" target="_blank" class="inline-flex items-center px-4 sm:px-6 py-2.5 sm:py-3 hover:bg-gray-200 text-blue-700 border-2 font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200">
                     Visit Alumni Website
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 </a>

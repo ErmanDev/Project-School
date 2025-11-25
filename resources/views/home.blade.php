@@ -57,56 +57,129 @@
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Education
+                                Preschool
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Engineering
+                                Elementary
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Arts of Science
+                                Junior High
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Information Technology
+                                Senior High
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Nursing
-                            </a>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Business
+                                College
                             </a>
                             <div class="border-t border-blue-100 my-1"></div>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                Office of Student Affairs
+                                Course descriptions and Curriculum outlines
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                NSTP Office
+                                Admission and Graduation Requirements
                             </a>
                         </div>
                     </div>
 
-                    <!-- Admissions -->
-                    <a href="{{ route('admissions.index') }}" class="px-3 py-2 text-blue-900 hover:bg-blue-50 transition-colors duration-200 text-sm lg:text-base">
-                        Admissions
-                    </a>
+                    <!-- Admissions Dropdown -->
+                    <div 
+                        x-data="{ open: false }"
+                        @mouseenter="open = true"
+                        @mouseleave="open = false"
+                        class="relative">
+                        <a 
+                            href="#"
+                            class="px-3 py-2 text-blue-900 hover:bg-blue-50 transition-colors duration-200 text-sm lg:text-base flex items-center cursor-pointer"
+                            role="button">
+                            Admissions
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 -translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-1"
+                            class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-blue-100 py-1 z-50"
+                            style="display: none;">
+                            <a 
+                                href="{{ route('admissions.requirements') }}" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                               Guidelines 
+                            </a>
+                         
+                            <a 
+                                href="{{ route('admissions.pre-registration') }}" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                                Download Requirements
+                            </a>
+                            <a 
+                                href="{{ route('admissions.enrollment-form') }}" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                                List of Requirements
+                            </a>
+                        </div>
+                    </div>
 
-                    <!-- News & Events -->
-                    <a href="{{ route('news-and-events.index') }}" class="px-3 py-2 text-blue-900 hover:bg-blue-50 transition-colors duration-200 text-sm lg:text-base">
-                        News & Events
-                    </a>
+                    <!-- News & Events Dropdown -->
+                    <div 
+                        x-data="{ open: false }"
+                        @mouseenter="open = true"
+                        @mouseleave="open = false"
+                        class="relative">
+                        <a 
+                            href="{{ route('news-and-events.index') }}" 
+                            class="px-3 py-2 text-blue-900 hover:bg-blue-50 transition-colors duration-200 text-sm lg:text-base flex items-center">
+                            News & Events
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <!-- Dropdown Menu -->
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 -translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-1"
+                            class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-blue-100 py-1 z-50"
+                            style="display: none;">
+                            <a 
+                                href="{{ route('news-and-events.index') }}" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                                Latest news
+                            </a>
+                            <a 
+                                href="{{ route('news-and-events.index') }}?view=calendar" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                                Calendar of Activities
+                            </a>
+                            <a 
+                                href="{{ route('news-and-events.index') }}?view=gallery" 
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
+                                Gallery
+                            </a>
+                        </div>
+                    </div>
 
                     <!-- Student Services Dropdown -->
                     <div 
@@ -166,48 +239,22 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 -translate-y-1"
-                            class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-blue-100 py-1 z-50 max-h-96 overflow-y-auto"
+                            class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-blue-100 py-1 z-50"
                             style="display: none;">
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Education
+                                Academic Personnel
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Engineering
+                                Non-Academic Personnel
                             </a>
                             <a 
                                 href="#" 
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Arts of Science
-                            </a>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Information Technology
-                            </a>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Nursing
-                            </a>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                College of Business
-                            </a>
-                            <div class="border-t border-blue-100 my-1"></div>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                Office of Student Affairs
-                            </a>
-                            <a 
-                                href="#" 
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 transition-colors duration-200">
-                                NSTP Office
+                                Departmental Details
                             </a>
                         </div>
                     </div>
@@ -312,65 +359,137 @@
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Education
+                                Preschool
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Engineering
+                                Elementary
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Arts of Science
+                                Junior High
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Information Technology
+                                Senior High
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Nursing
-                            </a>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Business
+                                College
                             </a>
                             <div class="border-t border-blue-100 my-1"></div>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                Office of Student Affairs
+                                Course descriptions and Curriculum outlines
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                NSTP Office
+                                Admission and graduation requirements
                             </a>
                         </div>
                     </div>
-                    <a 
-                        href="{{ route('admissions.index') }}" 
-                        @click="mobileMenuOpen = false"
-                        class="block px-4 py-3 text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
-                        Admissions
-                    </a>
-                    <a 
-                        href="{{ route('news-and-events.index') }}" 
-                        @click="mobileMenuOpen = false"
-                        class="block px-4 py-3 text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
-                        News & Events
-                    </a>
+                    <!-- Admissions with Dropdown -->
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open"
+                            class="w-full flex items-center justify-between px-4 py-3 text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
+                            <span>Admissions</span>
+                            <svg 
+                                class="w-5 h-5 transition-transform duration-200"
+                                :class="open ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 -translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-1"
+                            class="pl-4 space-y-1"
+                            style="display: none;">
+                            <a 
+                                href="{{ route('admissions.requirements') }}" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Admission Requirements
+                            </a>
+                            <a 
+                                href="{{ route('admissions.pre-registration') }}" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Pre-registration
+                            </a>
+                            <a 
+                                href="{{ route('admissions.enrollment-form') }}" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Enrollment Form
+                            </a>
+                        </div>
+                    </div>
+                    <!-- News & Events with Dropdown -->
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open"
+                            class="w-full flex items-center justify-between px-4 py-3 text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200 font-medium">
+                            <span>News & Events</span>
+                            <svg 
+                                class="w-5 h-5 transition-transform duration-200"
+                                :class="open ? 'rotate-180' : ''"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div 
+                            x-show="open"
+                            x-transition:enter="transition ease-out duration-200"
+                            x-transition:enter-start="opacity-0 -translate-y-1"
+                            x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150"
+                            x-transition:leave-start="opacity-100 translate-y-0"
+                            x-transition:leave-end="opacity-0 -translate-y-1"
+                            class="pl-4 space-y-1"
+                            style="display: none;">
+                            <a 
+                                href="{{ route('news-and-events.index') }}" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Latest news
+                            </a>
+                            <a 
+                                href="{{ route('news-and-events.index') }}?view=calendar" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Calendar of Activities
+                            </a>
+                            <a 
+                                href="{{ route('news-and-events.index') }}?view=gallery" 
+                                @click="mobileMenuOpen = false; open = false"
+                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
+                                Gallery
+                            </a>
+                        </div>
+                    </div>
                     <!-- Student Services with Dropdown -->
                     <div x-data="{ open: false }">
                         <button 
@@ -429,56 +548,25 @@
                             x-transition:leave="transition ease-in duration-150"
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 -translate-y-1"
-                            class="pl-4 space-y-1 max-h-64 overflow-y-auto"
+                            class="pl-4 space-y-1"
                             style="display: none;">
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Education
+                                Academic Personnel
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Engineering
+                                Non-Academic Personnel
                             </a>
                             <a 
                                 href="#" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Arts of Science
-                            </a>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Information Technology
-                            </a>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Nursing
-                            </a>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                College of Business
-                            </a>
-                            <div class="border-t border-blue-100 my-1"></div>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                Office of Student Affairs
-                            </a>
-                            <a 
-                                href="#" 
-                                @click="mobileMenuOpen = false; open = false"
-                                class="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 rounded-md transition-colors duration-200">
-                                NSTP Office
+                                Departmental Details
                             </a>
                         </div>
                     </div>
@@ -571,10 +659,10 @@
         <div class="w-full">
             <div class="bg-white overflow-hidden">
                 <div class="relative">
-                    <div class="carousel-container relative w-full h-[40vh] overflow-hidden">
+                    <div class="carousel-container relative w-full h-[40vh] lg:h-[50vh] overflow-hidden">
                         @if($carouselItems->count() > 0)
                             @foreach($carouselItems as $index => $item)
-                                <div class="carousel-item absolute inset-0 transition-opacity duration-1000 {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
+                                <div class="carousel-item absolute inset-0 transition-opacity duration-[2000ms] {{ $index === 0 ? 'opacity-100' : 'opacity-0' }}" style="{{ $item->featured_image ? 'background-image: url(' . asset('storage/' . $item->featured_image) . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
                 <div class="h-full {{ $item->featured_image ? 'bg-black bg-opacity-50' : ($index === 0 ? 'bg-black bg-opacity-60' : 'bg-gradient-to-r from-blue-900 to-white') }} flex items-center justify-center" style="{{ !$item->featured_image && $index === 0 ? 'background-image: url(' . asset('images/png/sic_1.png') . '); background-size: cover; background-position: center; background-repeat: no-repeat;' : '' }}">
                                         <div class="text-center text-white p-4 sm:p-6 md:p-8">
                                             <p class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-white">{{ $item->title }}</p>
@@ -600,7 +688,7 @@
                             @endforeach
                         @else
                             <!-- Default welcome slide if no featured items -->
-                            <div class="carousel-item absolute inset-0 transition-opacity duration-1000 opacity-100">
+                            <div class="carousel-item absolute inset-0 transition-opacity duration-[2000ms] opacity-100">
                                 <div class="h-full bg-black bg-opacity-80 flex items-center justify-center" style="background-image: url('{{ asset('images/png/sic_1.png') }}'); background-size: cover; background-position: center center; background-repeat: no-repeat; width: 100%; height: 100%;">
                                     <div class="text-center text-white p-4 sm:p-6 md:p-8">
                                         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">Welcome to San Isidro College</h2>
@@ -737,7 +825,7 @@
                     <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
                           <img src="{{ asset('images/png/nobg_logo.png') }}" class="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0" alt="Logo" />
                         <div class="flex-1 text-center md:text-left">
-                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-4">Dr. John Peterson</h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold text-gray-900 mb-2 sm:mb-4">FR. VIRGILIO H. DELFIN, CPA, DBM</h3>
                             <h4 class="text-base sm:text-lg text-blue-600 mb-3 sm:mb-4">School President</h4>
                             <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4 sm:mb-6">
                                 "Welcome to our educational community! At San Isidro College, we are committed to providing 
