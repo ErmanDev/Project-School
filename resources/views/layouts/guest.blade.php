@@ -30,7 +30,7 @@
         @endif
     </head>
     <body class="font-sans antialiased theme-app">
-        @if(request()->routeIs('home') || request()->routeIs('about') || request()->routeIs('academic-programs.*') || request()->routeIs('admissions.*') || request()->routeIs('news-and-events.*') || request()->routeIs('student-services.*') || request()->routeIs('directory.*') || request()->routeIs('alumni.*') || request()->routeIs('contact.*') || request()->routeIs('downloads.*'))
+        @if(request()->routeIs('home') || request()->routeIs('about') || request()->routeIs('academic-programs.*') || request()->routeIs('admissions.*') || request()->routeIs('news-and-events.*') || request()->routeIs('student-services.*') || request()->routeIs('directory.*') || request()->routeIs('faculty-staff.*') || request()->routeIs('alumni.*') || request()->routeIs('contact.*') || request()->routeIs('downloads.*'))
             @yield('slot')
         @else
             <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">

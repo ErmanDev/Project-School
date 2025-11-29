@@ -55,38 +55,38 @@
                             class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50 max-h-96 overflow-y-auto"
                             style="display: none;">
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.preschool') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Preschool
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.elementary') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Elementary
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.junior-high') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Junior High
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.senior-high') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Senior High
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.college') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 College
                             </a>
                             <div class="border-t border-gray-200 my-1"></div>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.course-descriptions') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Course descriptions and Curriculum outlines
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.admission-graduation-requirements') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Admission and Graduation Requirements
                             </a>
@@ -120,18 +120,18 @@
                             class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
                             style="display: none;">
                             <a 
-                                href="{{ route('admissions.requirements') }}" 
+                                href="{{ route('admissions.guidelines') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                Guidelines 
                             </a>
                          
                             <a 
-                                href="{{ route('admissions.pre-registration') }}" 
+                                href="{{ route('admissions.download-requirements') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Download Requirements
                             </a>
                             <a 
-                                href="{{ route('admissions.enrollment-form') }}" 
+                                href="{{ route('admissions.list-of-requirements') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 List of Requirements
                             </a>
@@ -242,17 +242,17 @@
                             class="absolute top-full left-0 mt-1 w-64 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
                             style="display: none;">
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.academic-personnel') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Academic Personnel
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.non-academic-personnel') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Non-Academic Personnel
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.departmental-details') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Departmental Details
                             </a>
@@ -356,44 +356,44 @@
                             class="pl-4 space-y-1"
                             style="display: none;">
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.preschool') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Preschool
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.elementary') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Elementary
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.junior-high') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Junior High
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.senior-high') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Senior High
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.college') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 College
                             </a>
                             <div class="border-t border-gray-200 my-1"></div>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.course-descriptions') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Course descriptions and Curriculum outlines
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('academic-programs.admission-graduation-requirements') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Admission and graduation requirements
@@ -426,22 +426,22 @@
                             class="pl-4 space-y-1"
                             style="display: none;">
                             <a 
-                                href="{{ route('admissions.requirements') }}" 
+                                href="{{ route('admissions.guidelines') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
-                                Admission Requirements
+                                Guidelines
                             </a>
                             <a 
-                                href="{{ route('admissions.pre-registration') }}" 
+                                href="{{ route('admissions.download-requirements') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
-                                Pre-registration
+                                Download Requirements
                             </a>
                             <a 
-                                href="{{ route('admissions.enrollment-form') }}" 
+                                href="{{ route('admissions.list-of-requirements') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
-                                Enrollment Form
+                                List of Requirements
                             </a>
                         </div>
                     </div>
@@ -551,19 +551,19 @@
                             class="pl-4 space-y-1"
                             style="display: none;">
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.academic-personnel') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Academic Personnel
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.non-academic-personnel') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Non-Academic Personnel
                             </a>
                             <a 
-                                href="#" 
+                                href="{{ route('faculty-staff.departmental-details') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Departmental Details

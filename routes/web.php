@@ -24,12 +24,20 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
-// Academic Programs Routes - Removed
-// Route::get('/academic-programs', [AcademicProgramsController::class, 'index'])->name('academic-programs.index');
-// Route::get('/academic-programs/{slug}', [AcademicProgramsController::class, 'show'])->name('academic-programs.show');
+// Academic Programs Routes - per level overview pages
+Route::view('/academic-programs/preschool', 'academic-programs.preschool')->name('academic-programs.preschool');
+Route::view('/academic-programs/elementary', 'academic-programs.elementary')->name('academic-programs.elementary');
+Route::view('/academic-programs/junior-high', 'academic-programs.junior-high')->name('academic-programs.junior-high');
+Route::view('/academic-programs/senior-high', 'academic-programs.senior-high')->name('academic-programs.senior-high');
+Route::view('/academic-programs/college', 'academic-programs.college')->name('academic-programs.college');
+Route::view('/academic-programs/course-descriptions', 'academic-programs.course-descriptions')->name('academic-programs.course-descriptions');
+Route::view('/academic-programs/admission-graduation-requirements', 'academic-programs.admission-graduation-requirements')->name('academic-programs.admission-graduation-requirements');
 
 // Admissions Routes
+Route::view('/admissions/guidelines', 'admissions.guidelines')->name('admissions.guidelines');
 Route::get('/admissions/requirements', [AdmissionsController::class, 'requirements'])->name('admissions.requirements');
+Route::view('/admissions/list-of-requirements', 'admissions.list-of-requirements')->name('admissions.list-of-requirements');
+Route::view('/admissions/download-requirements', 'admissions.download-requirements')->name('admissions.download-requirements');
 Route::get('/admissions/pre-registration', [AdmissionsController::class, 'preRegistration'])->name('admissions.pre-registration');
 Route::get('/admissions/enrollment-form', [AdmissionsController::class, 'enrollmentForm'])->name('admissions.enrollment-form');
 
@@ -41,10 +49,10 @@ Route::get('/news-and-events/{slug}', [NewsAndEventsController::class, 'show'])-
 Route::get('/student-services', [StudentServicesController::class, 'index'])->name('student-services.index');
 Route::get('/student-services/{slug}', [StudentServicesController::class, 'show'])->name('student-services.show');
 
-// Faculty & Staff Directory Routes - Removed
-// Route::get('/directory', [FacultyStaffController::class, 'index'])->name('directory.index');
-// Route::get('/directory/department/{slug}', [FacultyStaffController::class, 'showDepartment'])->name('directory.department');
-// Route::get('/directory/person/{slug}', [FacultyStaffController::class, 'showPerson'])->name('directory.person');
+// Faculty & Staff Routes
+Route::get('/faculty-staff/academic-personnel', [FacultyStaffController::class, 'academicPersonnel'])->name('faculty-staff.academic-personnel');
+Route::get('/faculty-staff/non-academic-personnel', [FacultyStaffController::class, 'nonAcademicPersonnel'])->name('faculty-staff.non-academic-personnel');
+Route::get('/faculty-staff/departmental-details', [FacultyStaffController::class, 'departmentalDetails'])->name('faculty-staff.departmental-details');
 
 // Alumni Corner (public)
 Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni.index');

@@ -172,6 +172,50 @@ class FacultyStaffController extends Controller
 
         return view('faculty-staff.show', compact('person', 'department'));
     }
+
+    public function academicPersonnel()
+    {
+        $allDepartments = $this->getStaticData();
+        $academicPersonnel = collect();
+
+        // Collect all academic personnel from all departments
+        foreach ($allDepartments as $department) {
+            $academic = $department->facultyAndStaff->filter(function($person) {
+                return $person->type === 'academic';
+            })->map(function($person) use ($department) {
+                $person->department = $department;
+                return $person;
+            });
+            $academicPersonnel = $academicPersonnel->merge($academic);
+        }
+
+        return view('faculty-staff.academic-personnel', compact('academicPersonnel', 'allDepartments'));
+    }
+
+    public function nonAcademicPersonnel()
+    {
+        $allDepartments = $this->getStaticData();
+        $nonAcademicPersonnel = collect();
+
+        // Collect all non-academic personnel from all departments
+        foreach ($allDepartments as $department) {
+            $nonAcademic = $department->facultyAndStaff->filter(function($person) {
+                return $person->type === 'non-academic';
+            })->map(function($person) use ($department) {
+                $person->department = $department;
+                return $person;
+            });
+            $nonAcademicPersonnel = $nonAcademicPersonnel->merge($nonAcademic);
+        }
+
+        return view('faculty-staff.non-academic-personnel', compact('nonAcademicPersonnel', 'allDepartments'));
+    }
+
+    public function departmentalDetails()
+    {
+        $allDepartments = $this->getStaticData();
+        return view('faculty-staff.departmental-details', compact('allDepartments'));
+    }
 }
 
 
