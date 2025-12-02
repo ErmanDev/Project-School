@@ -133,21 +133,6 @@
             @endif
         </div>
     </section>
-
-    <!-- Call to Action -->
-    <section class="py-12 bg-white dark:bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Stay Updated</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Follow us to get the latest news and events.</p>
-                <div class="flex justify-center space-x-4">
-                    <a href="{{ route('news-and-events.index') }}" class="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-colors duration-200">
-                        View All News & Events
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 </div>
 @endsection
 
