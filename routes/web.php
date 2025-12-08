@@ -43,6 +43,7 @@ Route::get('/admissions/enrollment-form', [AdmissionsController::class, 'enrollm
 
 // News & Events Routes
 Route::get('/news-and-events', [NewsAndEventsController::class, 'index'])->name('news-and-events.index');
+Route::get('/news-and-events/gallery', [NewsAndEventsController::class, 'gallery'])->name('news-and-events.gallery');
 Route::get('/news-and-events/{slug}', [NewsAndEventsController::class, 'show'])->name('news-and-events.show');
 
 // Student Services Routes

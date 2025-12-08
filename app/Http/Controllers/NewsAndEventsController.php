@@ -151,8 +151,13 @@ class NewsAndEventsController extends Controller
         
         $featuredItems = $allItems->where('is_featured', true)->take(3)->values();
         
-        // Create paginator for news (since view expects pagination)
-        $newsCollection = $allItems->where('category', 'news')->values();
+        // Get featured item IDs to exclude from news list
+        $featuredIds = $featuredItems->pluck('id')->toArray();
+        
+        // Create paginator for news (excluding featured items to avoid redundancy)
+        $newsCollection = $allItems->where('category', 'news')->reject(function ($item) use ($featuredIds) {
+            return in_array($item->id, $featuredIds);
+        })->values();
         $currentPage = request()->get('page', 1);
         $perPage = 6;
         $news = new \Illuminate\Pagination\LengthAwarePaginator(
@@ -167,6 +172,19 @@ class NewsAndEventsController extends Controller
         $announcements = $allItems->where('category', 'announcement')->take(5)->values();
 
         return view('news-and-events.index', compact('featuredItems', 'news', 'events', 'announcements'));
+    }
+
+    /**
+     * Display a gallery view of news and events
+     */
+    public function gallery()
+    {
+        $allItems = $this->getStaticData();
+
+        // For now, treat all active items as gallery entries
+        $galleryItems = $allItems->where('is_active', true)->values();
+
+        return view('news-and-events.gallery', compact('galleryItems'));
     }
 
     /**

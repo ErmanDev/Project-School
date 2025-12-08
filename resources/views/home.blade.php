@@ -174,7 +174,7 @@
                                 Calendar of Activities
                             </a>
                             <a 
-                                href="{{ route('news-and-events.index') }}?view=gallery" 
+                                href="{{ route('news-and-events.gallery') }}" 
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors duration-200">
                                 Gallery
                             </a>
@@ -483,7 +483,7 @@
                                 Calendar of Activities
                             </a>
                             <a 
-                                href="{{ route('news-and-events.index') }}?view=gallery" 
+                                href="{{ route('news-and-events.gallery') }}" 
                                 @click="mobileMenuOpen = false; open = false"
                                 class="block px-4 py-2 text-sm text-black hover:bg-gray-100 rounded-md transition-colors duration-200">
                                 Gallery
