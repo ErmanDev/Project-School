@@ -52,7 +52,10 @@ class LoginRequest extends FormRequest
             $user->id = 1;
             $user->name = 'Admin';
             $user->email = 'admin@admin.com';
+            $user->email_verified_at = now(); // Mark email as verified to pass 'verified' middleware
+            $user->password = ''; // Set empty password since we're not using it
             $user->exists = true; // Tell Laravel this is an existing user
+            $user->syncOriginal(); // Sync attributes to prevent database queries
 
             // Manually authenticate the user
             Auth::login($user, $this->boolean('remember'));
